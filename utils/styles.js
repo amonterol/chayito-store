@@ -42,6 +42,9 @@ const useStyles = makeStyles({
     marginTop: 50,
     paddingTop: 50,
   },
+  footerInfo: {
+    padding: 50,
+  },
   section: {
     marginTop: 10,
     marginBottom: 10,

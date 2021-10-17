@@ -32,7 +32,7 @@ export default function ProductDetail() {
           </Link>
         </NextLink>
       </div>
-      <Grid container spacing={1}>
+      <Grid container spacing={2}>
         <Grid item md={6} xs={12}>
           <Image
             src={product.image}
@@ -45,7 +45,9 @@ export default function ProductDetail() {
         <Grid item md={3} xs={12}>
           <List>
             <ListItem>
-              <Typography component="h1">{product.name}</Typography>
+              <Typography component="h1" variant="h1">
+                {product.name}
+              </Typography>
             </ListItem>
             <ListItem>
               <Typography>Category: {product.category}</Typography>

@@ -4,6 +4,8 @@ const ColoredLine = ({ color }) => (
       color: color,
       backgroundColor: color,
       height: 1,
+      marginLeft: 20,
+      marginRight: 20,
     }}
   />
 );

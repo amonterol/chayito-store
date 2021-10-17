@@ -5,6 +5,9 @@ import {
   AppBar,
   Box,
   Container,
+  createTheme,
+  ThemeProvider,
+  CssBaseline,
   Grid,
   Link,
   List,
@@ -16,6 +19,28 @@ import useStyles from "../utils/styles";
 import ColoredLine from "../components/ColoredLine";
 
 export default function Layout({ title, description, children }) {
+  const theme = createTheme({
+    typography: {
+      h1: {
+        fontSize: "1.6rem",
+        fontWeight: 400,
+        margin: "1rem 0",
+      },
+      h2: {
+        fontSize: "1.4rem",
+        fontWeight: 400,
+        margin: "1rem 0",
+      },
+    },
+    palette: {
+      primary: {
+        main: "#f0c000",
+      },
+      secondary: {
+        main: "#f0c000",
+      },
+    },
+  });
   const classes = useStyles();
   return (
     <div>
@@ -23,84 +48,104 @@ export default function Layout({ title, description, children }) {
         <title>{title ? `${title} - Tienda Chayito` : "Tienda Chayito"}</title>
         {description && <meta name="description" content={description}></meta>}
       </Head>
-      <Box position="static" sx={{ height: "25" }} className={classes.infobar}>
-        <Toolbar>
-          <Typography className={classes.infoEmail}>
-            info@tiendachayito.com
-          </Typography>
-        </Toolbar>
-      </Box>
-      <AppBar position="static" className={classes.navbar}>
-        <Toolbar>
-          <NextLink href="/" passHref>
-            <Link>
-              <Typography className={classes.brand}>Tienda Chayito</Typography>
-            </Link>
-          </NextLink>
-          <div className={classes.grow}></div>
-          <div>
-            <NextLink href="/cart" passHref>
-              <Link>Cart</Link>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Box
+          position="static"
+          sx={{ height: "25" }}
+          className={classes.infobar}
+        >
+          <Toolbar>
+            <Typography className={classes.infoEmail}>
+              info@tiendachayito.com
+            </Typography>
+          </Toolbar>
+        </Box>
+        <AppBar position="static" className={classes.navbar}>
+          <Toolbar>
+            <NextLink href="/" passHref>
+              <Link>
+                <Typography className={classes.brand}>
+                  Tienda Chayito
+                </Typography>
+              </Link>
             </NextLink>
-            <NextLink href="/login" passHref>
-              <Link>Login</Link>
-            </NextLink>
-          </div>
-        </Toolbar>
-      </AppBar>
-      <Container className={classes.main}>{children}</Container>
-      <footer className={classes.footer}>
-        <Grid container spacing={1}>
-          <Grid item md={4} xs={12}>
-            {" "}
-            <Typography component="h1"> Tienda Chayito</Typography>
-            <ColoredLine color="green" />
-            <Typography>{"Copyright © "} 2021 | Derechos reservados</Typography>
+            <div className={classes.grow}></div>
+            <div>
+              <NextLink href="/cart" passHref>
+                <Link>Cart</Link>
+              </NextLink>
+              <NextLink href="/login" passHref>
+                <Link>Login</Link>
+              </NextLink>
+            </div>
+          </Toolbar>
+        </AppBar>
+        <Container className={classes.main}>{children}</Container>
+        <footer className={classes.footer}>
+          <Grid container spacing={2}>
+            <Grid item md={4} xs={12} className={classes.footerInfo}>
+              {" "}
+              <Typography component="h1" variant="h1">
+                {" "}
+                Tienda Chayito
+              </Typography>
+              <ColoredLine color="green" />
+              <Typography>
+                {"Copyright © "} 2021 | Derechos reservados
+              </Typography>
+            </Grid>
+            <Grid item md={4} xs={12} className={classes.footerInfo}>
+              {" "}
+              <Typography component="h1" variant="h1">
+                {" "}
+                Products
+              </Typography>
+              <ColoredLine color="green" />
+              <List>
+                <ListItem>
+                  <Typography component="h3">Ropa para mujeres</Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3">Ropa para hombres</Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3">Ropa Infantil</Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3">Accesorios</Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="h3"> Telas</Typography>
+                </ListItem>
+              </List>
+            </Grid>
+            <Grid item md={4} xs={12} className={classes.footerInfo}>
+              {" "}
+              <Typography component="h1" variant="h1">
+                {" "}
+                Further Infor
+              </Typography>
+              <ColoredLine color="green" />
+              <ListItem>
+                <Typography component="h3"> Home</Typography>
+              </ListItem>
+              <ListItem>
+                <Typography component="h3"> About Us</Typography>
+              </ListItem>
+              <ListItem>
+                <Typography component="h3"> Shop Location</Typography>
+              </ListItem>
+              <ListItem>
+                <Typography component="h3"> FAQS</Typography>
+              </ListItem>
+              <ListItem>
+                <Typography component="h3"> Contact</Typography>
+              </ListItem>
+            </Grid>
           </Grid>
-          <Grid item md={4} xs={12}>
-            {" "}
-            <Typography component="h1"> Products</Typography>
-            <ColoredLine color="green" />
-            <List>
-              <ListItem>
-                <Typography component="h3">Ropa para mujeres</Typography>
-              </ListItem>
-              <ListItem>
-                <Typography component="h3">Ropa para hombres</Typography>
-              </ListItem>
-              <ListItem>
-                <Typography component="h3">Ropa Infantil</Typography>
-              </ListItem>
-              <ListItem>
-                <Typography component="h3">Accesorios</Typography>
-              </ListItem>
-              <ListItem>
-                <Typography component="h3"> Telas</Typography>
-              </ListItem>
-            </List>
-          </Grid>
-          <Grid item md={4} xs={12}>
-            {" "}
-            <Typography component="h1"> Further Infor</Typography>
-            <ColoredLine color="green" />
-            <ListItem>
-              <Typography component="h3"> Home</Typography>
-            </ListItem>
-            <ListItem>
-              <Typography component="h3"> About Us</Typography>
-            </ListItem>
-            <ListItem>
-              <Typography component="h3"> Shop Location</Typography>
-            </ListItem>
-            <ListItem>
-              <Typography component="h3"> FAQS</Typography>
-            </ListItem>
-            <ListItem>
-              <Typography component="h3"> Contact</Typography>
-            </ListItem>
-          </Grid>
-        </Grid>
-      </footer>
+        </footer>
+      </ThemeProvider>
     </div>
   );
 }
