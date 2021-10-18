@@ -1,10 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
-  loginForm: {
-    maxWidth: 600,
-    margin: "0 auto",
-  },
   infobar: {
     backgroundColor: "#203040",
     color: "#ffffff",
@@ -42,7 +38,14 @@ const useStyles = makeStyles({
     marginTop: 10,
     marginBottom: 10,
   },
-
+  loginForm: {
+    maxWidth: 600,
+    margin: "0 auto",
+  },
+  navbarButton: {
+    color: "#212529",
+    textTransform: "initial",
+  },
   footer: {
     backgroundColor: "#212529",
     minHeight: "25vh",
@@ -54,6 +57,11 @@ const useStyles = makeStyles({
 
   footerInfo: {
     padding: 50,
+  },
+
+  navbarButton: {
+    color: "#212529",
+    textTransform: "initial",
   },
 });
 export default useStyles;
