@@ -18,8 +18,10 @@ import Layout from "../../components/Layout";
 import useStyles from "../../utils/styles";
 import axios from "axios";
 import { Store } from "../../utils/Store";
+import { useRouter } from "next/router";
 
 export default function ProductDetail(props) {
+  const router = useRouter();
   const { dispatch } = useContext(Store);
   const { product } = props;
   const classes = useStyles();
@@ -36,6 +38,7 @@ export default function ProductDetail(props) {
     }
     console.log(data);
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity: 1 } });
+    router.push("/cart");
   };
 
   return (
@@ -48,7 +51,7 @@ export default function ProductDetail(props) {
         </NextLink>
       </div>
       <Grid container spacing={2}>
-        <Grid item md={6} xs={12}>
+        <Grid item={true} md={6} xs={12}>
           <Image
             src={product.image}
             alt={product.name}
@@ -57,7 +60,7 @@ export default function ProductDetail(props) {
             layout="responsive"
           ></Image>
         </Grid>
-        <Grid item md={3} xs={12}>
+        <Grid item={true} md={3} xs={12}>
           <List>
             <ListItem>
               <Typography component="h1" variant="h1">
@@ -80,7 +83,7 @@ export default function ProductDetail(props) {
             </ListItem>
           </List>
         </Grid>
-        <Grid item md={3} xs={12}>
+        <Grid item={true} md={3} xs={12}>
           <Card>
             <List>
               <ListItem>
@@ -95,10 +98,10 @@ export default function ProductDetail(props) {
               </ListItem>
               <ListItem>
                 <Grid container>
-                  <Grid item xs={6}>
+                  <Grid item={true} xs={6}>
                     <Typography>Status</Typography>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item={true} xs={6}>
                     <Typography>
                       {product.countInStock > 0 ? "In stock" : "Unavailable"}
                     </Typography>
