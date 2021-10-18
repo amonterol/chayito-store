@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import NextLink from "next/link";
 import {
   AppBar,
+  Badge,
   Box,
   Container,
   createTheme,
@@ -17,8 +18,13 @@ import {
 } from "@material-ui/core";
 import useStyles from "../utils/styles";
 import ColoredLine from "../components/ColoredLine";
+import { Store } from "../utils/Store";
+import Cookies from "js-cookie";
 
 export default function Layout({ title, description, children }) {
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
+
   const theme = createTheme({
     typography: {
       h1: {
@@ -73,7 +79,18 @@ export default function Layout({ title, description, children }) {
             <div className={classes.grow}></div>
             <div>
               <NextLink href="/cart" passHref>
-                <Link>Cart</Link>
+                <Link>
+                  {cart.cartItems.length > 0 ? (
+                    <Badge
+                      color="secondary"
+                      badgeContent={cart.cartItems.length}
+                    >
+                      Cart
+                    </Badge>
+                  ) : (
+                    "Cart"
+                  )}
+                </Link>
               </NextLink>
               <NextLink href="/login" passHref>
                 <Link>Login</Link>
