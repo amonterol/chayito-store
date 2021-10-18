@@ -54,19 +54,16 @@ export default function Layout({ title, description, children }) {
         <title>{title ? `${title} - Tienda Chayito` : "Tienda Chayito"}</title>
         {description && <meta name="description" content={description}></meta>}
       </Head>
+
+      <Box position="static" sx={{ height: "25" }} className={classes.infobar}>
+        <Toolbar>
+          <Typography className={classes.infoEmail}>
+            info@tiendachayito.com
+          </Typography>
+        </Toolbar>
+      </Box>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Box
-          position="static"
-          sx={{ height: "25" }}
-          className={classes.infobar}
-        >
-          <Toolbar>
-            <Typography className={classes.infoEmail}>
-              info@tiendachayito.com
-            </Typography>
-          </Toolbar>
-        </Box>
         <AppBar position="static" className={classes.navbar}>
           <Toolbar>
             <NextLink href="/" passHref>

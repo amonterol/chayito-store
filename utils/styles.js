@@ -1,6 +1,10 @@
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
+  loginForm: {
+    maxWidth: 600,
+    margin: "0 auto",
+  },
   infobar: {
     backgroundColor: "#203040",
     color: "#ffffff",
@@ -38,6 +42,7 @@ const useStyles = makeStyles({
     marginTop: 10,
     marginBottom: 10,
   },
+
   footer: {
     backgroundColor: "#212529",
     minHeight: "25vh",
@@ -46,6 +51,7 @@ const useStyles = makeStyles({
     marginTop: 50,
     paddingTop: 50,
   },
+
   footerInfo: {
     padding: 50,
   },
